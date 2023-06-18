@@ -40,8 +40,14 @@ export const DataProvider = ({ children }) => {
     }
     console.log("archive", archive_data)
 
+
+    const unArchive_habit = (unArchive_habit) => {
+        set_archive_data(prev => prev.filter(({ id }) => id !== unArchive_habit.id))
+        add_habit(unArchive_habit)
+    }
+
     return (
-        <DataContext.Provider value={{ habits_data, user_form, set_user_form, add_habit, delete_habit, archive_habit }}>
+        <DataContext.Provider value={{ habits_data, user_form, set_user_form, add_habit, delete_habit, archive_habit, archive_data, unArchive_habit }}>
             {children}
         </DataContext.Provider>
     )

@@ -2,6 +2,7 @@ import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Modal, Modal
 
 import { useData } from "../Context/Context"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Home = () => {
     const { habits_data, user_form, set_user_form, add_habit, delete_habit, archive_habit } = useData()
@@ -36,13 +37,17 @@ const Home = () => {
     }
 
     return (
-        <div style={{ minHeight: "100vh" }}>
+        <div>
             {/* =======HEADER======= */}
             <Heading>HABITS TRACKER</Heading>
             <Button colorScheme="red" width={"250px"} onClick={() => {
                 setOverlay(<OverlayOne />)
                 onOpen1()
             }}>Add Habits</Button>
+            <Link to="/archives">
+                <Button position={"absolute"} right={0} top={0} size={"md"} colorScheme="red" border={"1px solid white"}>Archives💼</Button>
+            </Link>
+
             {/* ======MODAL====== */}
 
             <Modal isCentered isOpen={isOpen1} onClose={onClose1} size="lg">
