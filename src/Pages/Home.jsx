@@ -36,6 +36,11 @@ const Home = () => {
 
     }
 
+    const edit_habit = (editHabit) => {
+        set_user_form(editHabit)
+        onOpen1()
+    }
+
     return (
         <div>
             {/* =======HEADER======= */}
@@ -64,7 +69,7 @@ const Home = () => {
                                 <Flex justify={"space-between"} gap={2}>
                                     <Box flex={1}>
                                         <FormLabel>Repeat</FormLabel>
-                                        <Select required placeholder='Repeat' onChange={(e) => set_user_form(prev => ({ ...prev, repeat: e.target.value }))}>
+                                        <Select required defaultValue={user_form.repeat} placeholder='Repeat' onChange={(e) => set_user_form(prev => ({ ...prev, repeat: e.target.value }))}>
                                             <option value={"daily"}>Daily</option>
                                             <option value={"weekly"}>Weekly</option>
                                             <option value={"monthly"}>Monthly</option>
@@ -72,7 +77,7 @@ const Home = () => {
                                     </Box>
                                     <Box flex={1}>
                                         <FormLabel>Goal</FormLabel>
-                                        <Select required placeholder='Goal' onChange={(e) => set_user_form(prev => ({ ...prev, goal: e.target.value }))}>
+                                        <Select defaultValue={user_form.goal} required placeholder='Goal' onChange={(e) => set_user_form(prev => ({ ...prev, goal: e.target.value }))}>
                                             <option value={"1 time daily"}>1 time daily</option>
                                             <option value={"twice daily"}>Twice daily</option>
                                             <option value={"thrice daily"}>Thrice daily</option>
@@ -84,16 +89,16 @@ const Home = () => {
                                 <Flex justify={"space-between"} gap={2}>
                                     <Box flex={1}>
                                         <FormLabel>Time of day</FormLabel>
-                                        <Select required placeholder='Time of day' onChange={(e) => set_user_form(prev => ({ ...prev, time: e.target.value }))}>
-                                            <option value={"thrice daily"}>Anytime</option>
-                                            <option value={"thrice daily"}>Morning</option>
-                                            <option value={"thrice daily"}>Night</option>
+                                        <Select defaultValue={user_form.time} required placeholder='Time of day' onChange={(e) => set_user_form(prev => ({ ...prev, time: e.target.value }))}>
+                                            <option value={"anytime"}>Anytime</option>
+                                            <option value={"morning"}>Morning</option>
+                                            <option value={"night"}>Night</option>
                                         </Select>
                                     </Box>
 
                                     <Box flex={1}>
                                         <FormLabel>Start Date</FormLabel>
-                                        <Select required placeholder='Start date' onChange={(e) => set_user_form(prev => ({ ...prev, start: e.target.value }))}>
+                                        <Select defaultValue={user_form.start} required placeholder='Start date' onChange={(e) => set_user_form(prev => ({ ...prev, start: e.target.value }))}>
                                             <option value={"today"}>Today</option>
                                             <option value={"tommorow"}>Tommorow</option>
                                             <option value={"next week"}>Next week</option>
@@ -150,6 +155,7 @@ const Home = () => {
                             <div className="habit_btn">
                                 <button onClick={() => archive_habit(each)}>archive</button>
                                 <button onClick={() => delete_habit(each.id)}>Delete</button>
+                                <button onClick={() => edit_habit(each)}>Edit</button>
                             </div>
 
                         </Box>
