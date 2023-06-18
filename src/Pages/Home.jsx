@@ -113,7 +113,7 @@ const Home = () => {
             <Flex margin={"auto"} marginTop={"5rem"} justify={"center"} align={"center"} gap={"2rem"} w={"45rem"} flexWrap={"wrap"} border={"1px solid red"} >
                 {
                     habits_data.map(each =>
-                        <Box position={"relative"} flex={1} backgroundImage={`https://robohash.org/a${each.name}`}>
+                        <Box position={"relative"} cursor={"pointer"} flex={1} backgroundImage={`https://robohash.org/a${each.name}`}>
                             <Text onClick={onOpen2} p={"5rem"} border={"1px solid grey"} className="habit" color={"white"} fontSize={"2xl"}>{each.name}</Text>
 
 
